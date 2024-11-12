@@ -15,8 +15,15 @@ class ProductController extends Controller
         $query = Product::query();
 
         if ($request->has('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('description', 'like', '%' . $request->search . '%');
+            $searchTerm = $request->search;
+
+            $query->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%');
+
+            // Check if the search term is numeric to include `product_id`
+            if (is_numeric($searchTerm)) {
+                $query->orWhere('product_id', $searchTerm);
+            }
         }
 
         // Sort by selected column and direction
@@ -29,6 +36,11 @@ class ProductController extends Controller
         // Return the view and pass the products to it
         return view('pages.prodcut_management', compact('products'));
     }
+
+
+
+
+
 
     public function create()
     {

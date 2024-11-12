@@ -18,14 +18,16 @@
                                 <option value="name" {{ request('sort_by') == 'name' ? 'selected' : '' }}>Name</option>
                                 <option value="price" {{ request('sort_by') == 'price' ? 'selected' : '' }}>Price</option>
                                 <option value="stock" {{ request('sort_by') == 'stock' ? 'selected' : '' }}>Stock</option>
+                                <option value="product_id" {{ request('sort_by') == 'product_id' ? 'selected' : '' }}>Product ID</option>
                             </select>
                         </div>
-                        <div class="col-md-2">
+
+                        {{-- <div class="col-md-2">
                             <select name="order" class="form-select">
                                 <option value="asc" {{ request('order') == 'asc' ? 'selected' : '' }}>Ascending</option>
                                 <option value="desc" {{ request('order') == 'desc' ? 'selected' : '' }}>Descending</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>
